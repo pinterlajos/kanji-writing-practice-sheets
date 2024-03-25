@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_07136" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:07136" kvg:element="然">
+	<g id="kvg:07136-g1" kvg:position="top">
+		<g id="kvg:07136-g2" kvg:element="月" kvg:position="left">
+			<path style="fill:none;stroke:#808080" id="kvg:07136-s1" kvg:type="㇒" d="M32.88,14.38c0.5,1.35,0.16,2.57-0.55,4.16c-4.06,9.08-9.31,18.01-15.09,24.07"/>
+			<path style="fill:none;stroke:#808080" id="kvg:07136-s2" kvg:type="㇆a" d="M33.88,21.24c0.69,0.18,1.72,0.58,2.88,0.35c3.73-0.71,7.79-1.38,9.98-1.8c3.03-0.58,3.74,0.43,3.02,3.28C46.73,35,33.5,55.75,17.42,66.25"/>
+			<path style="fill:none;stroke:#808080" id="kvg:07136-s3" kvg:type="㇐a" d="M29.82,31.84c1.36,0.41,6.81,2.86,9.54,5.31"/>
+			<path style="fill:none;stroke:#808080" id="kvg:07136-s4" kvg:type="㇐a" d="M21.68,42.77c1.87,0.9,7.46,4.71,9.02,6.73"/>
+		</g>
+		<g id="kvg:07136-g3" kvg:element="犬" kvg:position="right">
+			<g id="kvg:07136-g4" kvg:element="大">
+				<path style="fill:none;stroke:#808080" id="kvg:07136-s5" kvg:type="㇐" d="M50.38,37.19c0.81,0.32,3.56,0.47,5.12,0.29c8.15-0.99,19.56-2.23,25.02-2.63c1.12-0.08,2.72-0.37,5.22,0.18"/>
+				<path style="fill:none;stroke-width:4;" id="kvg:07136-s6" kvg:type="㇒" d="M66.36,14.08c0.71,0.8,1.22,1.85,1.24,3.45C67.88,37,61.5,60.12,44.03,68.12"/>
+<circle cx="66.36" cy="14.08" r="5" style="fill:red;stroke:red;" />
+			</g>
+			<g id="kvg:07136-g5" kvg:element="丶">
+			</g>
+		</g>
+	</g>
+	<g id="kvg:07136-g6" kvg:element="灬" kvg:variant="true" kvg:original="火" kvg:position="bottom" kvg:radical="general">
+	</g>
+</g>
+</g></svg>

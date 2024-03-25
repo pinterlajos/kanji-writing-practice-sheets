@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_076ca" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:076ca" kvg:element="益">
+	<g id="kvg:076ca-g1" kvg:position="top">
+		<path style="fill:none;stroke-width:4;" id="kvg:076ca-s1" kvg:type="㇔" d="M32.38,13.12c2.94,2.17,7.59,8.9,8.33,12.27"/>
+<circle cx="32.38" cy="13.12" r="5" style="fill:red;stroke:red;" />
+		<g id="kvg:076ca-g2" kvg:element="八" kvg:radical="nelson">
+			<g id="kvg:076ca-g3" kvg:position="left">
+			</g>
+			<g id="kvg:076ca-g4" kvg:position="right">
+			</g>
+		</g>
+	</g>
+	<g id="kvg:076ca-g5" kvg:element="皿" kvg:position="bottom" kvg:radical="tradit">
+	</g>
+</g>
+</g></svg>

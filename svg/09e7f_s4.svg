@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_09e7f" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:09e7f" kvg:element="鹿" kvg:radical="general">
+	<g id="kvg:09e7f-g1" kvg:element="广" kvg:position="tare">
+		<path style="fill:none;stroke:#808080" id="kvg:09e7f-s1" kvg:type="㇑a" d="M52.81,10.63c1.22,1.22,1.51,2.62,1.51,4.15c0,1.59-0.07,2.71-0.07,7.46"/>
+		<g id="kvg:09e7f-g2" kvg:element="厂">
+			<path style="fill:none;stroke:#808080" id="kvg:09e7f-s2" kvg:type="㇐" d="M21.38,25.23c3.37,0.52,6.88,0.29,10,0.01c12.46-1.12,29.03-2.76,45-3.69c3.48-0.2,6.82-0.47,10.25,0.27"/>
+			<path style="fill:none;stroke:#808080" id="kvg:09e7f-s3" kvg:type="㇒" d="M24.74,26.25c1.07,1.07,0.99,2.59,0.91,4.88C25,49.88,22.88,75,10.56,92.47"/>
+		</g>
+	</g>
+	<g id="kvg:09e7f-g3" kvg:position="tarec">
+		<path style="fill:none;stroke-width:4;" id="kvg:09e7f-s4" kvg:type="㇕" d="M31.75,41.62c2.99,0.94,5.57,0.89,8.61,0.45c11.76-1.7,34.88-4.14,38.65-4.39c3-0.2,4.07,1.69,3.53,3.94c-1.01,4.15-1.42,6.25-2.65,11.58"/>
+<circle cx="31.75" cy="41.62" r="5" style="fill:red;stroke:red;" />
+		<g id="kvg:09e7f-g4" kvg:element="比">
+			<g id="kvg:09e7f-g5" kvg:element="匕">
+			</g>
+		</g>
+	</g>
+</g>
+</g></svg>

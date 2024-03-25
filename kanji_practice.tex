@@ -2,6 +2,7 @@
 \documentclass[a4paper]{article}
 \usepackage[margin=1cm]{geometry}
 \usepackage{tikz}
+\usetikzlibrary{calc}
 \usepackage{svg}
 \usepackage{fancyhdr} % for custom headers and footers
 \usepackage{CJKutf8}
@@ -62,7 +63,8 @@
 \makeatother
 
 % teszt
-\newcommand{\combinedkanjiglyphs}{一/04e00,右/053f3,雨/096e8,円/05186,王/0738b}\title{小学１年生}
+\newcommand{\combinedkanjiglyphs}{警/08b66/19,護/08b77/20}
+\title{小学１年生}
 
 % első osztályosok
 %\include{kanji_practice_c1}
@@ -102,47 +104,42 @@
 \begin{document}
 %	\pagestyle{empty} % No page numbering
 	\pagestyle{customfooter} % Use custom footer page style
-	
 	\begin{CJK*}{UTF8}{min} % Use CJK package for Japanese characters
-
-
-% does not work with two lists
-%		\foreach \k/\glyphname in \kanjilist/\glyphlist {
-		\foreach \k/\glyphname in \combinedkanjiglyphs {
-		
+		\foreach \k/\glyphname/\strokecount in \combinedkanjiglyphs {
 			\hspace{-0.5cm}
 			\begin{tikzpicture}
 				\useasboundingbox (0,0) rectangle (19,13.2);%prevent slight overhangs in the large kanji (caused by the stroke numbers) to influence the size of the bouning box
-				\foreach \y in {0,1,...,8} {
+				% bottom 7 lines have empty boxes + linearly transparent glyphs
+				\foreach \y in {0,1,...,6} {
 					\foreach \x in {0,1,...,12} {
-						\ifnum\x<2
-							\ifnum\y>6
-								% Skip drawing the node
-							\else
-								\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
-								\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
-								\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
-								\ifnum\y>3
-%									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
-									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek]{svg/\glyphname_no_stroke.svg}};
-								\fi
-							\fi
+						\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
+						\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
+						\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
+						\pgfmathtruncatemacro{\opacity}{6-\y};
+%						\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
+						\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek,inkscapearea=page]{svg/\glyphname_t\opacity.svg}};
+					}
+				}
+				% a large 2x2 box for the sample
+				\foreach \y in {8} {
+					\foreach \x in {0} {
+						\draw[black,thick] (\x*\boxdist,\y*\boxdist-\boxdist) rectangle ++(2*\boxdist-\colsep,2*\boxdist-\rowsep);
+						\node at (\x*\boxdist+\boxdist-0.25cm,\y*\boxdist-0.25cm) {\includesvg[width=2.25cm,height=2.25cm]{svg/\glyphname_large.svg}};
+					}
+				}
+				% stroke order up to 22 strokes
+				\foreach \y in {7,8} {
+					\foreach \x in {2,3,...,12} {
+						\pgfmathtruncatemacro{\strokeidx}{(8-\y)*11+\x-2};
+						\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
+						\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
+						\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
+%						\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
+						\ifnum\strokeidx<\strokecount%
+							\pgfmathtruncatemacro{\si}{\strokeidx+1};
+							\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek,inkscapearea=page]{svg/\glyphname_s\si.svg}};
 						\else
-							% apparently not possible to avoid duplicating the branch
-								\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
-								\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
-								\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
-								\ifnum\y>3
-%									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
-									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek]{svg/\glyphname_no_stroke.svg}};
-								\fi
-						\fi
-						\ifnum\x<1
-							\ifnum\y>7
-								% draw a larger (2x2) box for the sample
-								\draw[black,thick] (\x*\boxdist,\y*\boxdist-\boxdist) rectangle ++(2*\boxdist-\colsep,2*\boxdist-\rowsep);
-								\node at (\x*\boxdist+\boxdist-0.25cm,\y*\boxdist-0.25cm) {\includesvg[width=2.5cm,height=2.5cm]{svg/\glyphname.svg}};
-							\fi
+							\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek,inkscapearea=page]{svg/\glyphname_t0.svg}};
 						\fi
 					}
 				}

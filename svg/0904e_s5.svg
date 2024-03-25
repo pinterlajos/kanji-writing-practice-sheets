@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_0904e" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:0904e" kvg:element="過">
+	<g id="kvg:0904e-g1" kvg:element="咼" kvg:position="nyoc" kvg:phon="咼">
+		<path style="fill:none;stroke:#808080" id="kvg:0904e-s1" kvg:type="㇑a" d="M48.8,15.94c1,1,1.32,2.56,1.55,4.2c0.95,6.89,1.65,15.93,2.18,24.55"/>
+		<path style="fill:none;stroke:#808080" id="kvg:0904e-s2" kvg:type="㇕b" d="M50.35,17.12c5.51-0.7,20.88-2.44,27.67-3.18c3.68-0.4,5.23,0.68,4.91,4.44c-0.48,5.57-1.69,18.42-2.32,23.71"/>
+		<path style="fill:none;stroke:#808080" id="kvg:0904e-s3" kvg:type="㇑a" d="M64.14,27.29c0.85,0.85,1.37,2.08,1.37,3.23c0,0.85-0.06,7.1-0.06,12.87"/>
+		<path style="fill:none;stroke:#808080" id="kvg:0904e-s4" kvg:type="㇐a" d="M66.38,28.88c2.45-0.21,11.1-1.43,14.6-1.85"/>
+		<g id="kvg:0904e-g2" kvg:element="冂">
+			<path style="fill:none;stroke-width:4;" id="kvg:0904e-s5" kvg:type="㇑" d="M41.75,44.69c1.15,1.15,1.46,2.74,1.65,4.62c0.86,8.55,1.73,17.44,2.52,24.69c0.22,2.02,0.43,3.92,0.63,5.65"/>
+<circle cx="41.75" cy="44.69" r="5" style="fill:red;stroke:red;" />
+		</g>
+		<g id="kvg:0904e-g3" kvg:element="口">
+		</g>
+	</g>
+	<g id="kvg:0904e-g4" kvg:element="⻌" kvg:original="辶" kvg:position="nyo" kvg:radical="general">
+	</g>
+</g>
+</g></svg>

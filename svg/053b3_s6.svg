@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_053b3" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:053b3" kvg:element="厳">
+	<g id="kvg:053b3-g1" kvg:element="⺍" kvg:original="吅" kvg:position="top">
+		<path style="fill:none;stroke:#808080" id="kvg:053b3-s1" kvg:type="㇔" d="M33.12,18.38c3.22,2.96,6.67,8.14,7.12,9.62"/>
+		<path style="fill:none;stroke:#808080" id="kvg:053b3-s2" kvg:type="㇔" d="M50.75,14.88c1.38,2.02,4.7,7.34,5.25,10.62"/>
+		<path style="fill:none;stroke:#808080" id="kvg:053b3-s3" kvg:type="㇒" d="M78.25,12.25c0.12,0.88,0.07,1.72-0.75,3c-1.75,2.75-5,7.75-6.75,10"/>
+	</g>
+	<g id="kvg:053b3-g2" kvg:position="bottom" kvg:phon="厂敢">
+		<g id="kvg:053b3-g3" kvg:element="厂" kvg:position="kamae" kvg:radical="tradit">
+			<path style="fill:none;stroke:#808080" id="kvg:053b3-s4" kvg:type="㇐" d="M22.63,35.48c2.96,1.05,6.44,0.51,9.48,0.26c15.78-1.27,34.87-3.62,48.77-4.3c3.05-0.15,6-0.26,9,0.38"/>
+			<path style="fill:none;stroke:#808080" id="kvg:053b3-s5" kvg:type="㇒" d="M23.99,36c1,1,1.16,2.24,1.16,3.92c0,10.83-3.81,36.45-15.59,47.05"/>
+		</g>
+		<g id="kvg:053b3-g4" kvg:element="敢">
+			<g id="kvg:053b3-g5" kvg:position="left">
+				<path style="fill:none;stroke-width:4;" id="kvg:053b3-s6" kvg:type="㇐" d="M30.65,44.96c1.31,0.43,2.89,0.07,4.21-0.09c3.97-0.48,10.98-1.44,15.39-1.98c1.51-0.18,2.95-0.44,4.45-0.14"/>
+<circle cx="30.65" cy="44.96" r="5" style="fill:red;stroke:red;" />
+				<g id="kvg:053b3-g6" kvg:element="耳">
+				</g>
+			</g>
+			<g id="kvg:053b3-g7" kvg:element="攵" kvg:variant="true" kvg:original="攴" kvg:position="right">
+				<g id="kvg:053b3-g8" kvg:position="top">
+				</g>
+				<g id="kvg:053b3-g9" kvg:element="乂" kvg:position="bottom">
+					<g id="kvg:053b3-g10" kvg:element="丿" kvg:radical="nelson">
+					</g>
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</g></svg>

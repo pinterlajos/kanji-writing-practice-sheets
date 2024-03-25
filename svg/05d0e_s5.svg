@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_05d0e" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:05d0e" kvg:element="崎">
+	<g id="kvg:05d0e-g1" kvg:element="山" kvg:position="left" kvg:radical="general">
+		<path style="fill:none;stroke:#808080" id="kvg:05d0e-s1" kvg:type="㇑a" d="M26.62,21.61c0.95,0.95,1.24,2.52,1.24,3.92c0,0.71-0.11,31.83-0.11,37.72"/>
+		<path style="fill:none;stroke:#808080" id="kvg:05d0e-s2" kvg:type="㇄a" d="M13.78,45.74c0.81,0.81,0.97,2.01,0.95,3.21c-0.12,5.01-0.47,11.3-0.77,16.53c-0.09,1.64,0.83,2.49,2.29,2.02c4.11-1.31,15.5-4.66,23.25-6.62"/>
+		<path style="fill:none;stroke:#808080" id="kvg:05d0e-s3" kvg:type="㇑" d="M40.96,34.82c0.98,0.98,1.03,2.43,0.95,4.01C41.5,46.38,41.54,51.1,41.03,59c-0.15,2.32-0.33,5.3-0.55,7.3"/>
+	</g>
+	<g id="kvg:05d0e-g2" kvg:element="奇" kvg:position="right" kvg:phon="奇">
+		<g id="kvg:05d0e-g3" kvg:element="大" kvg:variant="true" kvg:position="top">
+			<path style="fill:none;stroke:#808080" id="kvg:05d0e-s4" kvg:type="㇐" d="M51.19,23.36c1.47,0.45,4.18,0.22,5.69,0.09c7.82-0.69,20.05-2,27.89-2.89c2.1-0.24,3.98-0.19,6.06,0.1"/>
+			<path style="fill:none;stroke-width:4;" id="kvg:05d0e-s5" kvg:type="㇒" d="M69.45,9.81c0.3,0.46,0.47,0.99,0.44,1.98C69.58,25.43,60.25,39,50.81,43.29"/>
+<circle cx="69.45" cy="9.81" r="5" style="fill:red;stroke:red;" />
+		</g>
+		<g id="kvg:05d0e-g4" kvg:element="可" kvg:position="bottom">
+			<g id="kvg:05d0e-g5" kvg:element="丁" kvg:part="1">
+				<g id="kvg:05d0e-g6" kvg:element="一">
+				</g>
+			</g>
+			<g id="kvg:05d0e-g7" kvg:element="口">
+			</g>
+			<g id="kvg:05d0e-g8" kvg:element="丁" kvg:part="2">
+				<g id="kvg:05d0e-g9" kvg:element="亅">
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</g></svg>

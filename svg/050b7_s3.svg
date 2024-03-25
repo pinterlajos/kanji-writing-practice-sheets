@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_050b7" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:050b7" kvg:element="傷">
+	<g id="kvg:050b7-g1" kvg:element="亻" kvg:variant="true" kvg:original="人" kvg:position="left" kvg:radical="general">
+		<path style="fill:none;stroke:#808080" id="kvg:050b7-s1" kvg:type="㇒" d="M32.02,14c0.2,2.11-0.05,3.87-0.69,5.68c-4.02,11.52-9.87,23.34-19.08,37.36"/>
+		<path style="fill:none;stroke:#808080" id="kvg:050b7-s2" kvg:type="㇑" d="M25.46,38.25c1.08,1.08,1.64,2.81,1.64,4.29c0,12.22,0.07,34.15,0.1,46.71c0.01,3.07,0.01,5.58,0.01,7.25"/>
+	</g>
+	<g id="kvg:050b7-g2" kvg:position="right" kvg:phon="傷right">
+		<g id="kvg:050b7-g3" kvg:element="𠂉">
+			<path style="fill:none;stroke-width:4;" id="kvg:050b7-s3" kvg:type="㇒" d="M53.35,8c0.07,1.04,0.01,1.82-0.37,2.79c-2.32,5.91-6.13,12.28-12.23,19.26"/>
+<circle cx="53.35" cy="8" r="5" style="fill:red;stroke:red;" />
+		</g>
+		<g id="kvg:050b7-g4" kvg:element="昜">
+			<g id="kvg:050b7-g5" kvg:element="旦" kvg:position="top">
+				<g id="kvg:050b7-g6" kvg:element="日">
+				</g>
+				<g id="kvg:050b7-g7" kvg:element="一">
+				</g>
+			</g>
+			<g id="kvg:050b7-g8" kvg:element="勿" kvg:position="bottom">
+				<g id="kvg:050b7-g9" kvg:element="勹">
+				</g>
+			</g>
+		</g>
+	</g>
+</g>
+</g></svg>

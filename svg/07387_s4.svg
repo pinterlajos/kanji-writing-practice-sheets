@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_07387" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:07387" kvg:element="率">
+	<g id="kvg:07387-g1" kvg:element="玄" kvg:radical="tradit">
+		<g id="kvg:07387-g2" kvg:element="亠" kvg:position="top" kvg:radical="nelson">
+			<path style="fill:none;stroke:#808080" id="kvg:07387-s1" kvg:type="㇑a" d="M52.79,10.75c0.92,0.92,1.38,2,1.38,3.58c0,3.56-0.12,3.92-0.12,6.76"/>
+			<path style="fill:none;stroke:#808080" id="kvg:07387-s2" kvg:type="㇐" d="M22.03,24.47c2.47,0.28,5.49,0.15,8.22-0.14c12.38-1.33,34.38-3.2,48.26-3.91c2.36-0.12,6.25-0.04,7.97,0.35"/>
+		</g>
+		<g id="kvg:07387-g3" kvg:element="幺" kvg:position="bottom">
+			<path style="fill:none;stroke:#808080" id="kvg:07387-s3" kvg:type="㇜" d="M49.51,26.12c0.28,0.84-0.09,2.22-0.64,3.13c-1.5,2.5-2.79,4.67-6.16,8.44c-0.84,0.94-0.93,1.81,0.25,2.1c2.79,0.71,3.92,1.24,6.45,2.79"/>
+			<path style="fill:none;stroke-width:4;" id="kvg:07387-s4" kvg:type="㇜" d="M61.53,28.7c0.22,0.93,0.22,2.05-0.5,2.99c-4.97,6.48-12.53,14.06-20.37,21.87c-0.92,0.91-0.79,2.57,1.06,2.12c4.7-1.14,14.03-3.68,19.94-5.52"/>
+<circle cx="61.53" cy="28.7" r="5" style="fill:red;stroke:red;" />
+		</g>
+	</g>
+	<g id="kvg:07387-g4" kvg:element="冫">
+		<g id="kvg:07387-g5" kvg:position="top">
+		</g>
+		<g id="kvg:07387-g6" kvg:position="bottom">
+		</g>
+	</g>
+	<g id="kvg:07387-g7" kvg:element="十">
+	</g>
+</g>
+</g></svg>

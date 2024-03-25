@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_0691c" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:0691c" kvg:element="検">
+	<g id="kvg:0691c-g1" kvg:element="木" kvg:position="left" kvg:radical="general">
+		<path style="fill:none;stroke:#808080" id="kvg:0691c-s1" kvg:type="㇐" d="M10.03,38.99c1.97,0.64,4.06,0.58,5.61,0.36c5.46-0.79,14.29-2.36,21.17-3.76c1.45-0.29,2.94-0.46,3.95-0.25"/>
+		<path style="fill:none;stroke:#808080" id="kvg:0691c-s2" kvg:type="㇑" d="M28.27,10.5c0.93,0.93,1.54,2.75,1.54,4.28c0,0.83-0.04,54.55-0.23,74.34c-0.03,3.52-0.07,5.97-0.1,6.88"/>
+		<path style="fill:none;stroke:#808080" id="kvg:0691c-s3" kvg:type="㇒" d="M28.81,38.42c0,1.45-0.48,3.01-0.94,4.07c-5.39,12.24-9.04,18.38-17.93,30.09"/>
+		<path style="fill:none;stroke:#808080" id="kvg:0691c-s4" kvg:type="㇔/㇏" d="M32.62,45.62c2.19,1.84,5.78,7.82,7.63,11.39"/>
+	</g>
+	<g id="kvg:0691c-g2" kvg:element="㑒" kvg:original="僉" kvg:partial="true" kvg:position="right" kvg:phon="僉V">
+		<g id="kvg:0691c-g3" kvg:element="人" kvg:position="top">
+			<path style="fill:none;stroke:#808080" id="kvg:0691c-s5" kvg:type="㇒" d="M64.87,9.75c0.07,0.79,0.08,1.87-0.38,2.94C61.75,19,53.25,34.25,40.96,43.5"/>
+			<path style="fill:none;stroke-width:4;" id="kvg:0691c-s6" kvg:type="㇏" d="M64.78,14.88c5.47,4.37,16.81,16.59,23.76,22.98c2.2,2.03,4.29,3.27,6.76,4.83"/>
+<circle cx="64.78" cy="14.88" r="5" style="fill:red;stroke:red;" />
+		</g>
+		<g id="kvg:0691c-g4" kvg:position="bottom">
+			<g id="kvg:0691c-g5" kvg:element="一">
+			</g>
+			<g id="kvg:0691c-g6" kvg:element="口">
+			</g>
+			<g id="kvg:0691c-g7" kvg:element="人">
+			</g>
+		</g>
+	</g>
+</g>
+</g></svg>

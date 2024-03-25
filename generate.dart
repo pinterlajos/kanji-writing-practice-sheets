@@ -11,49 +11,162 @@ void main() async {
   const kanjiSrc = '胃,異,遺,域,宇,映,延,沿,恩,我,灰,拡,革,閣,割,株,干,巻,看,簡,危,机,揮,貴,疑,吸,供,胸,郷,勤,筋,系,敬,警,劇,激,穴,券,絹,権,憲,源,厳,己,呼,誤,后,孝,皇,紅,降,鋼,刻,穀,骨,困,砂,座,済,裁,策,冊,蚕,至,私,姿,視,詞,誌,磁,射,捨,尺,若,樹,収,宗,就,衆,従,縦,縮,熟,純,処,署,諸,除,承,将,傷,障,蒸,針,仁,垂,推,寸,盛,聖,誠,舌,宣,専,泉,洗,染,銭,善,奏,窓,創,装,層,操,蔵,臓,存,尊,退,宅,担,探,誕,段,暖,値,宙,忠,著,庁,頂,腸,潮,賃,痛,敵,展,討,党,糖,届,難,乳,認,納,脳,派,拝,背,肺,俳,班,晩,否,批,秘,俵,腹,奮,並,陛,閉,片,補,暮,宝,訪,亡,忘,棒,枚,幕,密,盟,模,訳,郵,優,預,幼,欲,翌,乱,卵,覧,裏,律,臨,朗,論';
   final kanjiList = kanjiSrc.split(',');
   final kanjiXml = await File(kanjiXmlFile).readAsLines();
-  final regex = RegExp(r'id="kvg:(\w+)"');
+  final kanjiMap = _toMap(kanjiXml);
   final collector = <String>[];
   for (final kanji in kanjiList) {
-    // Search for the line '<g id="kvg:0304b" kvg:element="か">' in the XML
-    final toMatchStr = '" kvg:element="$kanji"';
-    final matchingLines = kanjiXml.where((x) => x.startsWith('<g id')).where((x) => x.contains(toMatchStr)).toList(growable: false);
-    for (final matchingLine in matchingLines) {
-      //print('matchingLine=$matchingLine');
-      final match = regex.firstMatch(matchingLine);
-      if (match == null) {
-        print('  no match?');
-        continue;
-      }
-      final fileId = match.group(1);
-      //print('  fileId:$fileId');
-      // Read the SVG file
-      final svgInputFile = '$svgDir/$fileId.svg';
-      final svgLines = await File(svgInputFile).readAsLines();
-      final svgNoStrokesFile = File('$svgDir/${fileId}_no_stroke.svg').openWrite();
-      var inStrokeNumbersGroup = false, exitStrokeNumbersGroup = false;
-      for (var line in svgLines) {
-        if (line.contains('style="fill:none;stroke:#000000')) {
-          line = line.replaceAll('stroke-width:3', 'stroke-width:4');
-          line = line.replaceAll('stroke:#000000', 'stroke:#a0a0a0');
-        }
-        if (line.contains('kvg:StrokeNumbers')) {
-          inStrokeNumbersGroup = true;
-        } else if (inStrokeNumbersGroup && line == '</g>') {
-          exitStrokeNumbersGroup = true;
-        }
-        if (!inStrokeNumbersGroup) {
-          svgNoStrokesFile.writeln(line);
-        }
-        if (exitStrokeNumbersGroup) {
-          inStrokeNumbersGroup = false;
-        }
-      }
-      await svgNoStrokesFile.flush();
-      await svgNoStrokesFile.close();
-      collector.add('$kanji/$fileId');
-      break;
+    final info = kanjiMap[kanji];
+    if (info == null) {
+      print('  not defined? $kanji');
+      continue;
     }
+    // Create large file
+    final largeFileLines = _generateLarge(info);
+    await _writeToFile('$svgDir/${info.fileId}_large.svg', largeFileLines);
+    // Generate transparent files (t0 gray, t6 transparent). The number of steps has to match what the Latex code expects
+    for (var opacity = 0, maxOpacity = 6; opacity <= maxOpacity; opacity++) {
+      final opacityValue = 0.5 + 0.5 * opacity / maxOpacity;
+      final smallFileLines = _generateSmall(info, opacityValue);
+      await _writeToFile('$svgDir/${info.fileId}_t$opacity.svg', smallFileLines);
+    }
+    // Create stroke files
+    for (var strokeIndex = 1; strokeIndex <= info.strokeCount; strokeIndex++) {
+      final strokeLines = _generateStrokes(info, strokeIndex);
+      await _writeToFile('$svgDir/${info.fileId}_s$strokeIndex.svg', strokeLines);
+    }
+    collector.add('$kanji/${info.fileId}/${info.strokeCount}');
   }
   print('\\newcommand{\\combinedkanjiglyphs}{${collector.join(',')}}');
   assert(collector.length == kanjiList.length, "Not all kanji found");
+}
+
+class KanjiInfo {
+  final svgLines = <String>[];
+  var strokeCount = 0;
+  var fileId = '';
+}
+final idRegex = RegExp(r'kanji_(\w+)"');
+final strokeRegex = RegExp(r'<path id="kvg:\w+-s(\d+)"');
+final positionRegex = RegExp(r'd="[Mm]\s*([\d.]+),([\d.]+)');
+
+Map<String, KanjiInfo> _toMap(List<String> kanjiXml) {
+  final result = <String, KanjiInfo>{};
+  var state = 0;
+  var info = KanjiInfo();
+  for (final line in kanjiXml) {
+    switch (state) {
+      case 0:
+        {
+          // Wait for an opening line
+          if (line.startsWith("<kanji id=\"")) {
+            // Is the start of a kanji definition
+            final match = idRegex.firstMatch(line);
+            if (match == null) {
+              print('  no match?');
+              break;
+            }
+            final characterId = match.group(1);
+            if (characterId == null) {
+              print('  no match?');
+              break;
+            }
+            final charCode = int.parse(characterId, radix: 16);
+            final kanji = String.fromCharCode(charCode);
+            info = result.putIfAbsent(kanji, () => KanjiInfo());
+            info.fileId = characterId;
+            state = 1;
+          }
+          break;
+        }
+      case 1:
+        {
+          // Read SVG lines
+          if (line == '</kanji>') {
+            state = 0;
+            break;
+          }
+          final match = strokeRegex.firstMatch(line);
+          if (match != null) {
+            final stroke = int.parse(match.group(1)!);
+            if (stroke > info.strokeCount) {
+              info.strokeCount = stroke;
+            }
+          }
+          info.svgLines.add(line);
+          break;
+        }
+    }
+  }
+  return result;
+}
+
+List<String> _generateLarge(KanjiInfo info) {
+  return _generateWithStyle(info, 'fill:none;stroke:#000000;stroke-width:4');
+}
+
+List<String> _generateSmall(KanjiInfo info, double opacity) {
+  // Translate opacity into a RGB value from black to transparent
+  final opacityValue = (255 * opacity).round();
+  final opacityHex = opacityValue.toRadixString(16).padLeft(2, '0');
+  final color = '$opacityHex$opacityHex$opacityHex';
+  return _generateWithStyle(info, 'fill:none;stroke:#$color;stroke-width:3');
+}
+
+List<String> _generateWithStyle(KanjiInfo info, String style) {
+  final result = <String>[];
+  result.add('''<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">''');
+  result.add('<g id="kvg:StrokePaths_${info.fileId}" style="$style;stroke-linecap:round;stroke-linejoin:round;">');
+  result.addAll(info.svgLines);
+  result.add('</g></svg>');
+  return result;
+}
+
+List<String> _generateStrokes(KanjiInfo info, int upToThisMany) {
+  final result = <String>[];
+  result.add('''<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">''');
+  result.add('<g id="kvg:StrokePaths_${info.fileId}" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">');
+  for (final line in info.svgLines) {
+    final match = strokeRegex.firstMatch(line);
+    if (match != null) {
+      final stroke = int.parse(match.group(1)!);
+      if (stroke < upToThisMany) {
+        // Make prior strokes grey
+        final line2 = line.replaceFirst('id="kvg:', 'style="fill:none;stroke:#808080" id="kvg:');
+        result.add(line2);
+      } else if (stroke == upToThisMany) {
+        final line2 = line.replaceFirst('id="kvg:', 'style="fill:none;stroke-width:4;" id="kvg:');
+        result.add(line2);
+        final match = positionRegex.firstMatch(line);
+        if (match == null) {
+          print('  no position for ${info.fileId}');
+        } else {
+          final x = match.group(1);
+          final y = match.group(2);
+          // Add a stroke start indicator
+          result.add('<circle cx="$x" cy="$y" r="5" style="fill:red;stroke:red;" />');
+        }
+      }
+    } else {
+      // Not a stroke line, output as-is
+      result.add(line);
+    }
+  }
+  result.add('</g></svg>');
+  return result;
+}
+
+Future<void> _writeToFile(String path, List<String> contents) async {
+  final f = File(path).openWrite();
+  f.writeAll(contents, "\n");
+  await f.flush();
+  await f.close();
 }

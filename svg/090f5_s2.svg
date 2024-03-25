@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_090f5" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:090f5" kvg:element="郵">
+	<g id="kvg:090f5-g1" kvg:element="垂" kvg:position="left">
+		<g id="kvg:090f5-g2" kvg:element="千" kvg:part="1">
+			<g id="kvg:090f5-g3" kvg:element="丿">
+				<path style="fill:none;stroke:#808080" id="kvg:090f5-s1" kvg:type="㇒" d="M46.08,12.5c0,1.12-0.38,2.02-1.56,2.78c-6.14,3.97-13.27,7.35-23.21,10.61"/>
+			</g>
+			<g id="kvg:090f5-g4" kvg:element="十" kvg:part="1">
+				<path style="fill:none;stroke-width:4;" id="kvg:090f5-s2" kvg:type="㇐" d="M15.92,34.49c2.33,0.51,4.92,0.24,6.95-0.03c6.94-0.9,19.62-3.12,27.15-4.01c2.37-0.28,4.99-0.34,7.32,0.22"/>
+<circle cx="15.92" cy="34.49" r="5" style="fill:red;stroke:red;" />
+			</g>
+		</g>
+		<g id="kvg:090f5-g5" kvg:element="土">
+			<g id="kvg:090f5-g6" kvg:element="千" kvg:part="2">
+				<g id="kvg:090f5-g7" kvg:element="十" kvg:part="2">
+				</g>
+			</g>
+		</g>
+	</g>
+	<g id="kvg:090f5-g8" kvg:element="⻏" kvg:variant="true" kvg:original="邑" kvg:position="right" kvg:radical="general">
+	</g>
+</g>
+</g></svg>

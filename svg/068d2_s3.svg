@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_068d2" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:068d2" kvg:element="棒">
+	<g id="kvg:068d2-g1" kvg:element="木" kvg:position="left" kvg:radical="general">
+		<path style="fill:none;stroke:#808080" id="kvg:068d2-s1" kvg:type="㇐" d="M12.28,39.47c1.97,0.53,4.4,0.44,5.72,0.26c4.65-0.65,12.95-2.45,18.42-3.5c1.27-0.24,3.21-0.6,4.6-0.36"/>
+		<path style="fill:none;stroke:#808080" id="kvg:068d2-s2" kvg:type="㇑" d="M29.11,15.25c0.88,0.88,1.29,2.62,1.29,4.92c0,3.69,0.03,51.38,0.04,70.7c0,3.34,0,5.84,0,7.12"/>
+		<path style="fill:none;stroke-width:4;" id="kvg:068d2-s3" kvg:type="㇒" d="M29.94,39.53c0,1.09-0.96,3.94-1.42,4.96c-5.07,11.3-8.53,17-16.91,27.85"/>
+<circle cx="29.94" cy="39.53" r="5" style="fill:red;stroke:red;" />
+	</g>
+	<g id="kvg:068d2-g2" kvg:element="奉" kvg:position="right" kvg:phon="奉">
+		<g id="kvg:068d2-g3" kvg:element="𡗗" kvg:position="top">
+			<g id="kvg:068d2-g4" kvg:element="三">
+				<g id="kvg:068d2-g5" kvg:element="一" kvg:position="top">
+				</g>
+				<g id="kvg:068d2-g6" kvg:position="bottom">
+					<g id="kvg:068d2-g7" kvg:element="一">
+					</g>
+					<g id="kvg:068d2-g8" kvg:element="大" kvg:part="1">
+						<g id="kvg:068d2-g9" kvg:element="一">
+						</g>
+					</g>
+				</g>
+			</g>
+			<g id="kvg:068d2-g10" kvg:element="大" kvg:part="2">
+				<g id="kvg:068d2-g11" kvg:element="人">
+				</g>
+			</g>
+		</g>
+		<g id="kvg:068d2-g12" kvg:position="bottom">
+			<g id="kvg:068d2-g13" kvg:element="丨">
+			</g>
+		</g>
+	</g>
+</g>
+</g></svg>

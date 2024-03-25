@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+  <!ATTLIST g xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:element CDATA #IMPLIED kvg:variant CDATA #IMPLIED kvg:partial CDATA #IMPLIED kvg:original CDATA #IMPLIED kvg:part CDATA #IMPLIED kvg:number CDATA #IMPLIED kvg:tradForm CDATA #IMPLIED kvg:radicalForm CDATA #IMPLIED kvg:position CDATA #IMPLIED kvg:radical CDATA #IMPLIED kvg:phon CDATA #IMPLIED >
+  <!ATTLIST path xmlns:kvg CDATA #FIXED "http://kanjivg.tagaini.net" kvg:type CDATA #IMPLIED >
+  ]>
+  <svg xmlns="http://www.w3.org/2000/svg" width="109" height="109" viewBox="0 0 109 109">
+<g id="kvg:StrokePaths_054c1" style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;">
+<g id="kvg:054c1" kvg:element="品">
+	<g id="kvg:054c1-g1" kvg:element="口" kvg:position="top" kvg:radical="general">
+		<path style="fill:none;stroke:#808080" id="kvg:054c1-s1" kvg:type="㇑" d="M31.25,18.63c1.12,0.9,1.84,1.63,2.17,3.11c1.34,6.06,2.95,14.39,4.27,22.02c0.23,1.36,0.46,2.69,0.67,3.99"/>
+		<path style="fill:none;stroke:#808080" id="kvg:054c1-s2" kvg:type="㇕b" d="M34.31,20.67c11.36-2.13,27.84-3.97,36.21-4.76c3.58-0.34,6.48,0.83,5.44,4.83c-1.51,5.84-2.91,12.77-5.2,20.62"/>
+		<path style="fill:none;stroke:#808080" id="kvg:054c1-s3" kvg:type="㇐b" d="M39.17,45.17c7.95-0.69,18.78-1.62,29.71-2.66c1.39-0.13,2.78-0.26,4.17-0.4"/>
+	</g>
+	<g id="kvg:054c1-g2" kvg:position="bottom">
+		<g id="kvg:054c1-g3" kvg:element="口" kvg:position="left">
+			<path style="fill:none;stroke-width:4;" id="kvg:054c1-s4" kvg:type="㇑" d="M14.25,63.88c0.92,1.02,1.24,1.7,1.57,3.08c1.25,5.11,2.39,15.01,3.33,23.15c0.18,1.54,0.35,3.02,0.52,4.4"/>
+<circle cx="14.25" cy="63.88" r="5" style="fill:red;stroke:red;" />
+		</g>
+		<g id="kvg:054c1-g4" kvg:element="口" kvg:position="right">
+		</g>
+	</g>
+</g>
+</g></svg>
