@@ -66,6 +66,9 @@
 \newcommand{\combinedkanjiglyphs}{警/08b66/19,護/08b77/20}
 \title{小学１年生}
 
+% hiragana, katakana
+%\include{kanji_practice_c0}
+
 % első osztályosok
 %\include{kanji_practice_c1}
 
@@ -115,7 +118,7 @@
 						\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
 						\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
 						\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
-						\pgfmathtruncatemacro{\opacity}{6-\y};
+						\pgfmathtruncatemacro{\opacity}{6-\y}
 %						\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
 						\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek,inkscapearea=page]{svg/\glyphname_t\opacity.svg}};
 					}
@@ -136,7 +139,7 @@
 						\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
 %						\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
 						\ifnum\strokeidx<\strokecount%
-							\pgfmathtruncatemacro{\si}{\strokeidx+1};
+							\pgfmathtruncatemacro{\si}{\strokeidx+1}
 							\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek,inkscapearea=page]{svg/\glyphname_s\si.svg}};
 						\else
 							\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek,inkscapearea=page]{svg/\glyphname_t0.svg}};
