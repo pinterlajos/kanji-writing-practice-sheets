@@ -1,0 +1,158 @@
+% !TeX encoding = UTF-8
+\documentclass[a4paper]{article}
+\usepackage[margin=1cm]{geometry}
+\usepackage{tikz}
+\usepackage{svg}
+\usepackage{fancyhdr} % for custom headers and footers
+\usepackage{CJKutf8}
+% fontspec needs xelatex or lualatex (!)
+% in TexStudio, in the Options->Configure TexStudio->Commands section, add a '-shell-escape' argument to the PdfLatex/XeLatex etc. command lines
+\usepackage{fontspec} % for font selection
+
+% Define the dimensions
+\newlength{\boxsize}
+\setlength{\boxsize}{1cm} % Practice box size
+\newlength{\boxsizek}
+\setlength{\boxsizek}{0.8cm} % Size of kanji in practice box (80%)
+\newlength{\rowsep}
+\setlength{\rowsep}{0.5cm} % Row separation
+\newlength{\colsep}
+\setlength{\colsep}{0.5cm} % Column separation
+\newlength{\boxdist}
+\setlength{\boxdist}{1.5cm} % Column separation
+
+%\newfontfamily\kanjifont{Adobe Kaiti Std}%kínainak tűnik
+\newfontfamily\kanjifont{Kaishokk-R}
+\newfontfamily\titlefont{Noto Sans CJK JP Medium}
+\newcommand{\kanji}[1]{\fontsize{1cm}{1cm}\kanjifont\textcolor{gray}{#1}}
+
+% Initialize a counter
+\newcounter{mycounter}
+\setcounter{mycounter}{1}
+
+% Defining a new coordinate system for the page:
+%
+% --------------------------
+% |(-1,1)    (0,1)    (1,1)|
+% |                        |
+% |(-1,0)    (0,0)    (1,0)|
+% |                        |
+% |(-1,-1)   (0,-1)  (1,-1)|
+% --------------------------
+\makeatletter
+\def\parsecomma#1,#2\endparsecomma{\def\page@x{#1}\def\page@y{#2}}
+\tikzdeclarecoordinatesystem{page}{
+	\parsecomma#1\endparsecomma
+	\pgfpointanchor{current page}{north east}
+	% Save the upper right corner
+	\pgf@xc=\pgf@x%
+	\pgf@yc=\pgf@y%
+	% save the lower left corner
+	\pgfpointanchor{current page}{south west}
+	\pgf@xb=\pgf@x%
+	\pgf@yb=\pgf@y%
+	% Transform to the correct placement
+	\pgfmathparse{(\pgf@xc-\pgf@xb)/2.*\page@x+(\pgf@xc+\pgf@xb)/2.}
+	\expandafter\pgf@x\expandafter=\pgfmathresult pt
+	\pgfmathparse{(\pgf@yc-\pgf@yb)/2.*\page@y+(\pgf@yc+\pgf@yb)/2.}
+	\expandafter\pgf@y\expandafter=\pgfmathresult pt
+}
+% Redefine title command to stash the title into another macro
+\renewcommand{\title}[1]{\gdef\@title{#1}\gdef\titlea{#1}}
+\makeatother
+
+% teszt
+\newcommand{\combinedkanjiglyphs}{一/04e00,右/053f3,雨/096e8,円/05186,王/0738b}\title{小学１年生}
+
+% első osztályosok
+%\include{kanji_practice_c1}
+
+% második osztályosok
+%\include{kanji_practice_c2}
+
+% harmadik osztályosok
+%\include{kanji_practice_c3}
+
+% negyedik osztályosok
+%\include{kanji_practice_c4}
+
+% ötödik osztályosok
+%\include{kanji_practice_c5}
+
+% hatodik osztályosok
+%\include{kanji_practice_c6}
+
+% Define the TikZ command to draw the footer
+\newcommand{\drawfooter}{
+	\begin{tikzpicture}[remember picture,overlay]
+		\draw[black, line width=0.75pt](page cs:-0.95,-0.92) -- (page cs:.95,-0.92);
+		\node[anchor=north] at (page cs:0,-0.93) {\titlefont\thepage}; % Display page number
+		\node[anchor=north west] at (page cs:-0.95, -0.93) {\titlefont\titlea}; % Display title
+	\end{tikzpicture}
+}
+
+% Define page style with custom footer
+\fancypagestyle{customfooter}{
+	\fancyhf{} % Clear header and footer
+	\renewcommand{\headrulewidth}{0pt} % Remove header rule
+	\renewcommand{\footrulewidth}{0pt} % Remove footer rule
+	\fancyfoot[C]{\drawfooter} % Set footer content
+}
+
+\begin{document}
+%	\pagestyle{empty} % No page numbering
+	\pagestyle{customfooter} % Use custom footer page style
+	
+	\begin{CJK*}{UTF8}{min} % Use CJK package for Japanese characters
+
+
+% does not work with two lists
+%		\foreach \k/\glyphname in \kanjilist/\glyphlist {
+		\foreach \k/\glyphname in \combinedkanjiglyphs {
+		
+			\hspace{-0.5cm}
+			\begin{tikzpicture}
+				\useasboundingbox (0,0) rectangle (19,13.2);%prevent slight overhangs in the large kanji (caused by the stroke numbers) to influence the size of the bouning box
+				\foreach \y in {0,1,...,8} {
+					\foreach \x in {0,1,...,12} {
+						\ifnum\x<2
+							\ifnum\y>6
+								% Skip drawing the node
+							\else
+								\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
+								\ifnum\y>3
+%									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
+									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek]{svg/\glyphname_no_stroke.svg}};
+								\fi
+							\fi
+						\else
+							% apparently not possible to avoid duplicating the branch
+								\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
+								\ifnum\y>3
+%									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
+									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek]{svg/\glyphname_no_stroke.svg}};
+								\fi
+						\fi
+						\ifnum\x<1
+							\ifnum\y>7
+								% draw a larger (2x2) box for the sample
+								\draw[black,thick] (\x*\boxdist,\y*\boxdist-\boxdist) rectangle ++(2*\boxdist-\colsep,2*\boxdist-\rowsep);
+								\node at (\x*\boxdist+\boxdist-0.25cm,\y*\boxdist-0.25cm) {\includesvg[width=2.5cm,height=2.5cm]{svg/\glyphname.svg}};
+							\fi
+						\fi
+					}
+				}
+			\end{tikzpicture}
+			% Increment the counter
+			\stepcounter{mycounter}
+			% Check if the counter is odd
+			\ifodd\value{mycounter}
+				\clearpage % Start a new page for each character pair
+			\fi
+		}
+	\end{CJK*}
+\end{document}
