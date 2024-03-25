@@ -108,10 +108,10 @@
 %	\pagestyle{empty} % No page numbering
 	\pagestyle{customfooter} % Use custom footer page style
 	\begin{CJK*}{UTF8}{min} % Use CJK package for Japanese characters
-		\foreach \k/\glyphname/\strokecount in \combinedkanjiglyphs {
-			\hspace{-0.5cm}
+		\foreach \k/\glyphname/\strokecount in \combinedkanjiglyphs {%
+			\hspace{-0.5cm}%
 			\begin{tikzpicture}
-				\useasboundingbox (0,0) rectangle (19,13.2);%prevent slight overhangs in the large kanji (caused by the stroke numbers) to influence the size of the bouning box
+				\useasboundingbox (0,0) rectangle (19,13);%prevent slight overhangs in the large kanji (caused by the stroke numbers) to influence the size of the bounding box
 				% bottom 7 lines have empty boxes + linearly transparent glyphs
 				\foreach \y in {0,1,...,6} {
 					\foreach \x in {0,1,...,12} {
@@ -146,13 +146,15 @@
 						\fi
 					}
 				}
-			\end{tikzpicture}
+			\end{tikzpicture}%
 			% Increment the counter
-			\stepcounter{mycounter}
+			\stepcounter{mycounter}%
 			% Check if the counter is odd
-			\ifodd\value{mycounter}
-				\clearpage % Start a new page for each character pair
-			\fi
+			\ifodd\value{mycounter}%
+				\clearpage% Start a new page for each character pair
+			\else%
+				\vskip\rowsep%
+			\fi%
 		}
 	\end{CJK*}
 \end{document}
