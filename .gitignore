@@ -1,0 +1,7 @@
+*.aux
+*.log
+*.pdf
+*.gz
+*.otf
+*.ttf
+svg-inkscape

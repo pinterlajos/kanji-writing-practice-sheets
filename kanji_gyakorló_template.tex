@@ -1,0 +1,162 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1cm]{geometry}
+\usepackage{tikz}
+\usepackage{svg}
+\usepackage{fancyhdr} % for custom headers and footers
+\usepackage{CJKutf8}
+% fontspec needs xelatex or lualatex (!)
+% in TexStudio, in the Options->Configure TexStudio->Commands section, add a '-shell-escape' argument to the PdfLatex/XeLatex etc. command lines
+\usepackage{fontspec} % for font selection
+
+% Define the dimensions
+\newlength{\boxsize}
+\setlength{\boxsize}{1cm} % Practice box size
+\newlength{\boxsizek}
+\setlength{\boxsizek}{0.8cm} % Size of kanji in practice box (80%)
+\newlength{\rowsep}
+\setlength{\rowsep}{0.5cm} % Row separation
+\newlength{\colsep}
+\setlength{\colsep}{0.5cm} % Column separation
+\newlength{\boxdist}
+\setlength{\boxdist}{1.5cm} % Column separation
+
+%\newfontfamily\kanjifont{Adobe Kaiti Std}%kínainak tűnik
+\newfontfamily\kanjifont{Kaishokk-R}
+\newfontfamily\titlefont{Noto Sans CJK JP Medium}
+\newcommand{\kanji}[1]{\fontsize{1cm}{1cm}\kanjifont\textcolor{gray}{#1}}
+
+% Initialize a counter
+\newcounter{mycounter}
+\setcounter{mycounter}{1}
+
+% Defining a new coordinate system for the page:
+%
+% --------------------------
+% |(-1,1)    (0,1)    (1,1)|
+% |                        |
+% |(-1,0)    (0,0)    (1,0)|
+% |                        |
+% |(-1,-1)   (0,-1)  (1,-1)|
+% --------------------------
+\makeatletter
+\def\parsecomma#1,#2\endparsecomma{\def\page@x{#1}\def\page@y{#2}}
+\tikzdeclarecoordinatesystem{page}{
+	\parsecomma#1\endparsecomma
+	\pgfpointanchor{current page}{north east}
+	% Save the upper right corner
+	\pgf@xc=\pgf@x%
+	\pgf@yc=\pgf@y%
+	% save the lower left corner
+	\pgfpointanchor{current page}{south west}
+	\pgf@xb=\pgf@x%
+	\pgf@yb=\pgf@y%
+	% Transform to the correct placement
+	\pgfmathparse{(\pgf@xc-\pgf@xb)/2.*\page@x+(\pgf@xc+\pgf@xb)/2.}
+	\expandafter\pgf@x\expandafter=\pgfmathresult pt
+	\pgfmathparse{(\pgf@yc-\pgf@yb)/2.*\page@y+(\pgf@yc+\pgf@yb)/2.}
+	\expandafter\pgf@y\expandafter=\pgfmathresult pt
+}
+% Redefine title command to stash the title into another macro
+\renewcommand{\title}[1]{\gdef\@title{#1}\gdef\titlea{#1}}
+\makeatother
+
+% első osztályosok
+%\newcommand{\kanjilist}{一,右,雨,円,王,音,下,火,花,貝,学,気,九,休,玉,金,空,月,犬,見,五,口,校,左,三,山,子,四,糸,字,耳,七,車,手,十,出,女,小,上,森,人,水,正,生,青,夕,石,赤,千,川,先,早,草,足,村,大,男,竹,中,虫,町,天,田,土,二,日,入,年,白,八,百,文,木,本,名,目,立,力,林,六}
+%\newcommand{\combinedkanjiglyphs}{一/04e00,右/053f3,雨/096e8,円/05186,王/0738b,音/097f3,下/04e0b,火/0706b,花/082b1,貝/08c9d,学/05b66,気/06c17,九/04e5d,休/04f11,玉/07389,金/091d1,空/07a7a,月/06708,犬/072ac,見/0898b,五/04e94,口/053e3,校/06821,左/05de6,三/04e09,山/05c71,子/05b50,四/056db,糸/07cf8,字/05b57,耳/08033,七/04e03,車/08eca,手/0624b,十/05341,出/051fa,女/05973,小/05c0f,上/04e0a,森/068ee,人/04eba,水/06c34,正/06b63,生/0751f,青/09752,夕/05915,石/077f3,赤/08d64,千/05343,川/05ddd,先/05148,早/065e9,草/08349,足/08db3,村/06751,大/05927,男/07537,竹/07af9,中/04e2d,虫/0866b,町/0753a,天/05929,田/07530,土/0571f,二/04e8c,日/065e5,入/05165,年/05e74,白/0767d,八/0516b,百/0767e,文/06587,木/06728,本/0672c,名/0540d,目/076ee,立/07acb,力/0529b,林/06797,六/0516d}
+\newcommand{\combinedkanjiglyphs}{一/04e00,右/053f3,雨/096e8,円/05186,王/0738b}
+\title{小学１年生}
+% második osztályosok
+%\newcommand{\kanjilist}{引,羽,雲,園,遠,何,科,夏,家,歌,画,回,会,海,絵,外,角,楽,活,間,丸,岩,顔,汽,記,帰,弓,牛,魚,京,強,教,近,兄,形,計,元,言,原,戸,古,午,後,語,工,公,広,交,光,考,行,高,黄,合,谷,国,黒,今,才,細,作,算,止,市,矢,姉,思,紙,寺,自,時,室,社,弱,首,秋,週,春,書,少,場,色,食,心,新,親,図,数,西,声,星,晴,切,雪,船,線,前,組,走,多,太,体,台,地,池,知,茶,昼,長,鳥,朝,直,通,弟,店,点,電,刀,冬,当,東,答,頭,同,道,読,内,南,肉,馬,売,買,麦,半,番,父,風,分,聞,米,歩,母,方,北,毎,妹,万,明,鳴,毛,門,夜,野,友,用,曜,来,里,理,話}
+%\newcommand{\combinedkanjiglyphs}{引/05f15,羽/07fbd,雲/096f2,園/05712,遠/09060,何/04f55,科/079d1,夏/0590f,家/05bb6,歌/06b4c,画/0753b,回/056de,会/04f1a,海/06d77,絵/07d75,外/05916,角/089d2,楽/0697d,活/06d3b,間/09593,丸/04e38,岩/05ca9,顔/09854,汽/06c7d,記/08a18,帰/05e30,弓/05f13,牛/0725b,魚/09b5a,京/04eac,強/05f37,教/06559,近/08fd1,兄/05144,形/05f62,計/08a08,元/05143,言/08a00,原/0539f,戸/06238,古/053e4,午/05348,後/05f8c,語/08a9e,工/05de5,公/0516c,広/05e83,交/04ea4,光/05149,考/08003,行/0884c,高/09ad8,黄/09ec4,合/05408,谷/08c37,国/056fd,黒/09ed2,今/04eca,才/0624d,細/07d30,作/04f5c,算/07b97,止/06b62,市/05e02,矢/077e2,姉/059c9,思/0601d,紙/07d19,寺/05bfa,自/081ea,時/06642,室/05ba4,社/0793e,弱/05f31,首/09996,秋/079cb,週/09031,春/06625,書/066f8,少/05c11,場/05834,色/08272,食/098df,心/05fc3,新/065b0,親/089aa,図/056f3,数/06570,西/0897f,声/058f0,星/0661f,晴/06674,切/05207,雪/096ea,船/08239,線/07dda,前/0524d,組/07d44,走/08d70,多/0591a,太/0592a,体/04f53,台/053f0,地/05730,池/06c60,知/077e5,茶/08336,昼/0663c,長/09577,鳥/09ce5,朝/0671d,直/076f4,通/0901a,弟/05f1f,店/05e97,点/070b9,電/096fb,刀/05200,冬/051ac,当/05f53,東/06771,答/07b54,頭/0982d,同/0540c,道/09053,読/08aad,内/05185,南/05357,肉/08089,馬/099ac,売/058f2,買/08cb7,麦/09ea6,半/0534a,番/0756a,父/07236,風/098a8,分/05206,聞/0805e,米/07c73,歩/06b69,母/06bcd,方/065b9,北/05317,毎/06bce,妹/059b9,万/04e07,明/0660e,鳴/09cf4,毛/06bdb,門/09580,夜/0591c,野/091ce,友/053cb,用/07528,曜/066dc,来/06765,里/091cc,理/07406,話/08a71}
+%\title{小学２年生}
+% harmadik osztályosok
+%\newcommand{\kanjilist}{悪,安,暗,医,委,意,育,員,院,飲,運,泳,駅,央,横,屋,温,化,荷,界,開,階,寒,感,漢,館,岸,起,期,客,究,急,級,宮,球,去,橋,業,曲,局,銀,区,苦,具,君,係,軽,血,決,研,県,庫,湖,向,幸,港,号,根,祭,皿,仕,死,使,始,指,歯,詩,次,事,持,式,実,写,者,主,守,取,酒,受,州,拾,終,習,集,住,重,宿,所,暑,助,昭,消,商,章,勝,乗,植,申,身,神,真,深,進,世,整,昔,全,相,送,想,息,速,族,他,打,対,待,代,第,題,炭,短,談,着,注,柱,丁,帳,調,追,定,庭,笛,鉄,転,都,度,投,豆,島,湯,登,等,動,童,農,波,配,倍,箱,畑,発,反,坂,板,皮,悲,美,鼻,筆,氷,表,秒,病,品,負,部,服,福,物,平,返,勉,放,味,命,面,問,役,薬,由,油,有,遊,予,羊,洋,葉,陽,様,落,流,旅,両,緑,礼,列,練,路,和}
+%\newcommand{\combinedkanjiglyphs}{悪/060aa,安/05b89,暗/06697,医/0533b,委/059d4,意/0610f,育/080b2,員/054e1,院/09662,飲/098f2,運/0904b,泳/06cf3,駅/099c5,央/0592e,横/06a2a,屋/05c4b,温/06e29,化/05316,荷/08377,界/0754c,開/0958b,階/0968e,寒/05bd2,感/0611f,漢/06f22,館/09928,岸/05cb8,起/08d77,期/0671f,客/05ba2,究/07a76,急/06025,級/07d1a,宮/05bae,球/07403,去/053bb,橋/06a4b,業/0696d,曲/066f2,局/05c40,銀/09280,区/0533a,苦/082e6,具/05177,君/0541b,係/04fc2,軽/08efd,血/08840,決/06c7a,研/07814,県/0770c,庫/05eab,湖/06e56,向/05411,幸/05e78,港/06e2f,号/053f7,根/06839,祭/0796d,皿/076bf,仕/04ed5,死/06b7b,使/04f7f,始/059cb,指/06307,歯/06b6f,詩/08a69,次/06b21,事/04e8b,持/06301,式/05f0f,実/05b9f,写/05199,者/08005,主/04e3b,守/05b88,取/053d6,酒/09152,受/053d7,州/05dde,拾/062fe,終/07d42,習/07fd2,集/096c6,住/04f4f,重/091cd,宿/05bbf,所/06240,暑/06691,助/052a9,昭/0662d,消/06d88,商/05546,章/07ae0,勝/052dd,乗/04e57,植/0690d,申/07533,身/08eab,神/0795e,真/0771f,深/06df1,進/09032,世/04e16,整/06574,昔/06614,全/05168,相/076f8,送/09001,想/060f3,息/0606f,速/0901f,族/065cf,他/04ed6,打/06253,対/05bfe,待/05f85,代/04ee3,第/07b2c,題/0984c,炭/070ad,短/077ed,談/08ac7,着/07740,注/06ce8,柱/067f1,丁/04e01,帳/05e33,調/08abf,追/08ffd,定/05b9a,庭/05ead,笛/07b1b,鉄/09244,転/08ee2,都/090fd,度/05ea6,投/06295,豆/08c46,島/05cf6,湯/06e6f,登/0767b,等/07b49,動/052d5,童/07ae5,農/08fb2,波/06ce2,配/0914d,倍/0500d,箱/07bb1,畑/07551,発/0767a,反/053cd,坂/05742,板/0677f,皮/076ae,悲/060b2,美/07f8e,鼻/09f3b,筆/07b46,氷/06c37,表/08868,秒/079d2,病/075c5,品/054c1,負/08ca0,部/090e8,服/0670d,福/0798f,物/07269,平/05e73,返/08fd4,勉/052c9,放/0653e,味/05473,命/0547d,面/09762,問/0554f,役/05f79,薬/085ac,由/07531,油/06cb9,有/06709,遊/0904a,予/04e88,羊/07f8a,洋/06d0b,葉/08449,陽/0967d,様/069d8,落/0843d,流/06d41,旅/065c5,両/04e21,緑/07dd1,礼/0793c,列/05217,練/07df4,路/08def,和/0548c}
+%\title{小学３年生}
+% negyedik osztályosok
+%\newcommand{\kanjilist}{愛,案,以,衣,位,茨,印,英,栄,媛,塩,岡,億,加,果,貨,課,芽,賀,改,械,害,街,各,覚,潟,完,官,管,関,観,願,岐,希,季,旗,器,機,議,求,泣,給,挙,漁,共,協,鏡,競,極,熊,訓,軍,郡,群,径,景,芸,欠,結,建,健,験,固,功,好,香,候,康,佐,差,菜,最,埼,材,崎,昨,札,刷,察,参,産,散,残,氏,司,試,児,治,滋,辞,鹿,失,借,種,周,祝,順,初,松,笑,唱,焼,照,城,縄,臣,信,井,成,省,清,静,席,積,折,節,説,浅,戦,選,然,争,倉,巣,束,側,続,卒,孫,帯,隊,達,単,置,仲,沖,兆,低,底,的,典,伝,徒,努,灯,働,特,徳,栃,奈,梨,熱,念,敗,梅,博,阪,飯,飛,必,票,標,不,夫,付,府,阜,富,副,兵,別,辺,変,便,包,法,望,牧,末,満,未,民,無,約,勇,要,養,浴,利,陸,良,料,量,輪,類,令,冷,例,連,老,労,録}
+%\newcommand{\combinedkanjiglyphs}{愛/0611b,案/06848,以/04ee5,衣/08863,位/04f4d,茨/08328,印/05370,英/082f1,栄/06804,媛/05a9b,塩/05869,岡/05ca1,億/05104,加/052a0,果/0679c,貨/08ca8,課/08ab2,芽/082bd,賀/08cc0,改/06539,械/068b0,害/05bb3,街/08857,各/05404,覚/0899a,潟/06f5f,完/05b8c,官/05b98,管/07ba1,関/095a2,観/089b3,願/09858,岐/05c90,希/05e0c,季/05b63,旗/065d7,器/05668,機/06a5f,議/08b70,求/06c42,泣/06ce3,給/07d66,挙/06319,漁/06f01,共/05171,協/05354,鏡/093e1,競/07af6,極/06975,熊/0718a,訓/08a13,軍/08ecd,郡/090e1,群/07fa4,径/05f84,景/0666f,芸/082b8,欠/06b20,結/07d50,建/05efa,健/05065,験/09a13,固/056fa,功/0529f,好/0597d,香/09999,候/05019,康/05eb7,佐/04f50,差/05dee,菜/083dc,最/06700,埼/057fc,材/06750,崎/05d0e,昨/06628,札/0672d,刷/05237,察/05bdf,参/053c2,産/07523,散/06563,残/06b8b,氏/06c0f,司/053f8,試/08a66,児/05150,治/06cbb,滋/06ecb,辞/08f9e,鹿/09e7f,失/05931,借/0501f,種/07a2e,周/05468,祝/0795d,順/09806,初/0521d,松/0677e,笑/07b11,唱/05531,焼/0713c,照/07167,城/057ce,縄/07e04,臣/081e3,信/04fe1,井/04e95,成/06210,省/07701,清/06e05,静/09759,席/05e2d,積/07a4d,折/06298,節/07bc0,説/08aac,浅/06d45,戦/06226,選/09078,然/07136,争/04e89,倉/05009,巣/05de3,束/0675f,側/05074,続/07d9a,卒/05352,孫/05b6b,帯/05e2f,隊/0968a,達/09054,単/05358,置/07f6e,仲/04ef2,沖/06c96,兆/05146,低/04f4e,底/05e95,的/07684,典/05178,伝/04f1d,徒/05f92,努/052aa,灯/0706f,働/050cd,特/07279,徳/05fb3,栃/06803,奈/05948,梨/068a8,熱/071b1,念/05ff5,敗/06557,梅/06885,博/0535a,阪/0962a,飯/098ef,飛/098db,必/05fc5,票/07968,標/06a19,不/04e0d,夫/0592b,付/04ed8,府/05e9c,阜/0961c,富/05bcc,副/0526f,兵/05175,別/05225,辺/08fba,変/05909,便/04fbf,包/05305,法/06cd5,望/0671b,牧/07267,末/0672b,満/06e80,未/0672a,民/06c11,無/07121,約/07d04,勇/052c7,要/08981,養/0990a,浴/06d74,利/05229,陸/09678,良/0826f,料/06599,量/091cf,輪/08f2a,類/0985e,令/04ee4,冷/051b7,例/04f8b,連/09023,老/08001,労/052b4,録/09332}
+%\title{小学４年生}
+% ötödik osztályosok
+%\newcommand{\kanjilist}{圧,囲,移,因,永,営,衛,易,益,液,演,応,往,桜,可,仮,価,河,過,快,解,格,確,額,刊,幹,慣,眼,紀,基,寄,規,喜,技,義,逆,久,旧,救,居,許,境,均,禁,句,型,経,潔,件,険,検,限,現,減,故,個,護,効,厚,耕,航,鉱,構,興,講,告,混,査,再,災,妻,採,際,在,財,罪,殺,雑,酸,賛,士,支,史,志,枝,師,資,飼,示,似,識,質,舎,謝,授,修,述,術,準,序,招,証,象,賞,条,状,常,情,織,職,制,性,政,勢,精,製,税,責,績,接,設,絶,祖,素,総,造,像,増,則,測,属,率,損,貸,態,団,断,築,貯,張,停,提,程,適,統,堂,銅,導,得,毒,独,任,燃,能,破,犯,判,版,比,肥,非,費,備,評,貧,布,婦,武,復,複,仏,粉,編,弁,保,墓,報,豊,防,貿,暴,脈,務,夢,迷,綿,輸,余,容,略,留,領,歴}
+%\newcommand{\combinedkanjiglyphs}{圧/05727,囲/056f2,移/079fb,因/056e0,永/06c38,営/055b6,衛/0885b,易/06613,益/076ca,液/06db2,演/06f14,応/05fdc,往/05f80,桜/0685c,可/053ef,仮/04eee,価/04fa1,河/06cb3,過/0904e,快/05feb,解/089e3,格/0683c,確/078ba,額/0984d,刊/0520a,幹/05e79,慣/06163,眼/0773c,紀/07d00,基/057fa,寄/05bc4,規/0898f,喜/0559c,技/06280,義/07fa9,逆/09006,久/04e45,旧/065e7,救/06551,居/05c45,許/08a31,境/05883,均/05747,禁/07981,句/053e5,型/0578b,経/07d4c,潔/06f54,件/04ef6,険/0967a,検/0691c,限/09650,現/073fe,減/06e1b,故/06545,個/0500b,護/08b77,効/052b9,厚/0539a,耕/08015,航/0822a,鉱/09271,構/069cb,興/08208,講/08b1b,告/0544a,混/06df7,査/067fb,再/0518d,災/0707d,妻/059bb,採/063a1,際/0969b,在/05728,財/08ca1,罪/07f6a,殺/06bba,雑/096d1,酸/09178,賛/08cdb,士/058eb,支/0652f,史/053f2,志/05fd7,枝/0679d,師/05e2b,資/08cc7,飼/098fc,示/0793a,似/04f3c,識/08b58,質/08cea,舎/0820e,謝/08b1d,授/06388,修/04fee,述/08ff0,術/08853,準/06e96,序/05e8f,招/062db,証/08a3c,象/08c61,賞/08cde,条/06761,状/072b6,常/05e38,情/060c5,織/07e54,職/08077,制/05236,性/06027,政/0653f,勢/052e2,精/07cbe,製/088fd,税/07a0e,責/08cac,績/07e3e,接/063a5,設/08a2d,絶/07d76,祖/07956,素/07d20,総/07dcf,造/09020,像/050cf,増/05897,則/05247,測/06e2c,属/05c5e,率/07387,損/0640d,貸/08cb8,態/0614b,団/056e3,断/065ad,築/07bc9,貯/08caf,張/05f35,停/0505c,提/063d0,程/07a0b,適/09069,統/07d71,堂/05802,銅/09285,導/05c0e,得/05f97,毒/06bd2,独/072ec,任/04efb,燃/071c3,能/080fd,破/07834,犯/072af,判/05224,版/07248,比/06bd4,肥/080a5,非/0975e,費/08cbb,備/05099,評/08a55,貧/08ca7,布/05e03,婦/05a66,武/06b66,復/05fa9,複/08907,仏/04ecf,粉/07c89,編/07de8,弁/05f01,保/04fdd,墓/05893,報/05831,豊/08c4a,防/09632,貿/08cbf,暴/066b4,脈/08108,務/052d9,夢/05922,迷/08ff7,綿/07dbf,輸/08f38,余/04f59,容/05bb9,略/07565,留/07559,領/09818,歴/06b74}
+%\title{小学５年生}
+% hatodik osztályosok
+%\newcommand{\kanjilist}{胃,異,遺,域,宇,映,延,沿,恩,我,灰,拡,革,閣,割,株,干,巻,看,簡,危,机,揮,貴,疑,吸,供,胸,郷,勤,筋,系,敬,警,劇,激,穴,券,絹,権,憲,源,厳,己,呼,誤,后,孝,皇,紅,降,鋼,刻,穀,骨,困,砂,座,済,裁,策,冊,蚕,至,私,姿,視,詞,誌,磁,射,捨,尺,若,樹,収,宗,就,衆,従,縦,縮,熟,純,処,署,諸,除,承,将,傷,障,蒸,針,仁,垂,推,寸,盛,聖,誠,舌,宣,専,泉,洗,染,銭,善,奏,窓,創,装,層,操,蔵,臓,存,尊,退,宅,担,探,誕,段,暖,値,宙,忠,著,庁,頂,腸,潮,賃,痛,敵,展,討,党,糖,届,難,乳,認,納,脳,派,拝,背,肺,俳,班,晩,否,批,秘,俵,腹,奮,並,陛,閉,片,補,暮,宝,訪,亡,忘,棒,枚,幕,密,盟,模,訳,郵,優,預,幼,欲,翌,乱,卵,覧,裏,律,臨,朗,論}
+%\newcommand{\combinedkanjiglyphs}{胃/080c3,異/07570,遺/0907a,域/057df,宇/05b87,映/06620,延/05ef6,沿/06cbf,恩/06069,我/06211,灰/07070,拡/062e1,革/09769,閣/095a3,割/05272,株/0682a,干/05e72,巻/05dfb,看/0770b,簡/07c21,危/05371,机/0673a,揮/063ee,貴/08cb4,疑/07591,吸/05438,供/04f9b,胸/080f8,郷/090f7,勤/052e4,筋/07b4b,系/07cfb,敬/0656c,警/08b66,劇/05287,激/06fc0,穴/07a74,券/05238,絹/07d79,権/06a29,憲/061b2,源/06e90,厳/053b3,己/05df1,呼/0547c,誤/08aa4,后/0540e,孝/05b5d,皇/07687,紅/07d05,降/0964d,鋼/092fc,刻/0523b,穀/07a40,骨/09aa8,困/056f0,砂/07802,座/05ea7,済/06e08,裁/088c1,策/07b56,冊/0518a,蚕/08695,至/081f3,私/079c1,姿/059ff,視/08996,詞/08a5e,誌/08a8c,磁/078c1,射/05c04,捨/06368,尺/05c3a,若/082e5,樹/06a39,収/053ce,宗/05b97,就/05c31,衆/08846,従/05f93,縦/07e26,縮/07e2e,熟/0719f,純/07d14,処/051e6,署/07f72,諸/08af8,除/09664,承/0627f,将/05c06,傷/050b7,障/0969c,蒸/084b8,針/091dd,仁/04ec1,垂/05782,推/063a8,寸/05bf8,盛/076db,聖/08056,誠/08aa0,舌/0820c,宣/05ba3,専/05c02,泉/06cc9,洗/06d17,染/067d3,銭/092ad,善/05584,奏/0594f,窓/07a93,創/05275,装/088c5,層/05c64,操/064cd,蔵/08535,臓/081d3,存/05b58,尊/05c0a,退/09000,宅/05b85,担/062c5,探/063a2,誕/08a95,段/06bb5,暖/06696,値/05024,宙/05b99,忠/05fe0,著/08457,庁/05e81,頂/09802,腸/08178,潮/06f6e,賃/08cc3,痛/075db,敵/06575,展/05c55,討/08a0e,党/0515a,糖/07cd6,届/05c4a,難/096e3,乳/04e73,認/08a8d,納/07d0d,脳/08133,派/06d3e,拝/062dd,背/080cc,肺/080ba,俳/04ff3,班/073ed,晩/06669,否/05426,批/06279,秘/079d8,俵/04ff5,腹/08179,奮/0596e,並/04e26,陛/0965b,閉/09589,片/07247,補/088dc,暮/066ae,宝/05b9d,訪/08a2a,亡/04ea1,忘/05fd8,棒/068d2,枚/0679a,幕/05e55,密/05bc6,盟/076df,模/06a21,訳/08a33,郵/090f5,優/0512a,預/09810,幼/05e7c,欲/06b32,翌/07fcc,乱/04e71,卵/05375,覧/089a7,裏/088cf,律/05f8b,臨/081e8,朗/06717,論/08ad6}
+%\title{小学６年生}
+
+% Define the TikZ command to draw the footer
+\newcommand{\drawfooter}{
+	\begin{tikzpicture}[remember picture,overlay]
+		\draw[black, line width=0.75pt](page cs:-0.95,-0.92) -- (page cs:.95,-0.92);
+		\node[anchor=north] at (page cs:0,-0.93) {\titlefont\thepage}; % Display page number
+		\node[anchor=north west] at (page cs:-0.95, -0.93) {\titlefont\titlea}; % Display title
+	\end{tikzpicture}
+}
+
+% Define page style with custom footer
+\fancypagestyle{customfooter}{
+	\fancyhf{} % Clear header and footer
+	\renewcommand{\headrulewidth}{0pt} % Remove header rule
+	\renewcommand{\footrulewidth}{0pt} % Remove footer rule
+	\fancyfoot[C]{\drawfooter} % Set footer content
+}
+
+\begin{document}
+%	\pagestyle{empty} % No page numbering
+	\pagestyle{customfooter} % Use custom footer page style
+	
+	\begin{CJK*}{UTF8}{min} % Use CJK package for Japanese characters
+
+
+% does not work with two lists
+%		\foreach \k/\glyphname in \kanjilist/\glyphlist {
+		\foreach \k/\glyphname in \combinedkanjiglyphs {
+		
+			\hspace{-0.5cm}
+			\begin{tikzpicture}
+				\useasboundingbox (0,0) rectangle (19,13.2);%prevent slight overhangs in the large kanji (caused by the stroke numbers) to influence the size of the bouning box
+				\foreach \y in {0,1,...,8} {
+					\foreach \x in {0,1,...,12} {
+						\ifnum\x<2
+							\ifnum\y>6
+								% Skip drawing the node
+							\else
+								\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
+								\ifnum\y>3
+%									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
+									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek]{svg/\glyphname_no_stroke.svg}};
+								\fi
+							\fi
+						\else
+							% apparently not possible to avoid duplicating the branch
+								\draw[black,thick] (\x*\boxdist,\y*\boxdist) rectangle ++(\boxsize,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist+\colsep,\y*\boxdist) -- ++(0,\boxsize);
+								\draw[gray,dashed] (\x*\boxdist,\y*\boxdist+\rowsep) -- ++(\boxsize,0);
+								\ifnum\y>3
+%									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\kanji{\k}};
+									\node at (\x*\boxdist+\colsep,\y*\boxdist+\rowsep) {\includesvg[width=\boxsizek,height=\boxsizek]{svg/\glyphname_no_stroke.svg}};
+								\fi
+						\fi
+						\ifnum\x<1
+							\ifnum\y>7
+								% draw a larger (2x2) box for the sample
+								\draw[black,thick] (\x*\boxdist,\y*\boxdist-\boxdist) rectangle ++(2*\boxdist-\colsep,2*\boxdist-\rowsep);
+								\node at (\x*\boxdist+\boxdist-0.25cm,\y*\boxdist-0.25cm) {\includesvg[width=2.5cm,height=2.5cm]{svg/\glyphname.svg}};
+							\fi
+						\fi
+					}
+				}
+			\end{tikzpicture}
+			% Increment the counter
+			\stepcounter{mycounter}
+			% Check if the counter is odd
+			\ifodd\value{mycounter}
+				\clearpage % Start a new page for each character pair
+			\fi
+		}
+	\end{CJK*}
+\end{document}
