@@ -1,0 +1,13 @@
+\pgfpathrectangle{\pgfpointorigin}{\pgfpoint{109}{109}}
+\pgfusepath{use as bounding box}
+\ifnum1<\si
+\pgfpathsvg{M72.37,25.25c0.75,2,0.92,4.89,0.25,7.25c-7.12,25-25.38,44.75-43.62,56.88}
+\pgfsetroundcap\pgfusepath{stroke}
+\fi
+\ifnum1=\si
+\pgfsetstrokecolor{black}\pgfsetlinewidth{\linewidth}
+\pgfpathsvg{M72.37,25.25c0.75,2,0.92,4.89,0.25,7.25c-7.12,25-25.38,44.75-43.62,56.88}
+\pgfsetroundcap\pgfusepath{stroke}
+\pgfsetcolor{red}
+\pgfpathcircle{\pgfpoint{72.37}{25.25}}{\radius}\pgfusepath{fill,stroke}
+\fi
